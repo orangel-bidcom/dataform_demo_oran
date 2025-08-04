@@ -1,0 +1,8 @@
+config {
+  type: "table", 
+  description: "Traigo el category por SKU"
+}
+
+SELECT po.codigo,
+       po.category
+FROM `gestion_comercial.unificacion_categories_primera_ocurrencia` as po
