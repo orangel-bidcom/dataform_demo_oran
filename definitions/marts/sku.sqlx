@@ -1,0 +1,28 @@
+config {
+    type: "table",
+    description: "Genero tabla final con informacion de cada SKU"
+}
+
+SELECT
+  pm.codigoProducto,
+  pm.descripcionProducto,
+  pm.esKitProducto,
+  pm.nombreProductoTipo,
+  pc.category,
+  -- las variantes 
+  -- marca
+  -- si es nuevo o no , ejemplo para probar las funciones 
+  -- categoria resumida
+  -- categoria meli
+  -- ficha,
+  -- sus MLAS (validar)
+  -- utilidad
+  -- rentabilidad
+  -- contribucion marginal
+FROM
+  ${ref("products_view")} AS pm
+LEFT JOIN
+  ${ref("categories_view")} AS pc
+  ON pc.codigo = REGEXP_EXTRACT(pm.codigoProducto, r'([A-Z]+[0-9]+)$')
+
+

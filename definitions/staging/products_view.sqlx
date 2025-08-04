@@ -1,0 +1,15 @@
+config {
+  type: "table", 
+  description: "informacion por SKU de Master",
+    tags: ["master"],
+}
+
+
+Select p.codigoProducto,
+       p.descripcionProducto,
+       p.esKitProducto,
+       pt.nombreProductoTipo
+from `ds_presupuestos.productos` as p 
+  left join `ds_presupuestos.productos_tipos` as pt
+   on pt.idProductoTipo = p.idProductoTipo
+where p.fechaBajaProducto is null
